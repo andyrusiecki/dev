@@ -1,0 +1,34 @@
+FROM registry.fedoraproject.org/fedora-toolbox:37
+
+# Set max dnf parallel downloads to 20
+RUN echo "max_parallel_downloads=20" >> /etc/dnf/dnf.conf
+
+# Add Kubernetes repo
+RUN echo $'[kubernetes] \n\
+name=Kubernetes \n\
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-$basearch \n\
+enabled=1 \n\
+gpgcheck=1 \n\
+gpgkey=https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg \n\
+' > /etc/yum.repos.d/kubernetes.repo
+
+# Install extra packages
+RUN dnf install -y --refresh \
+  awscli \
+  docker-compose \
+  fish \
+  golang \
+  kubectl \
+  make \
+  podman-remote \
+  vim
+
+# Add Symlinks for remote podman
+RUN ln -s /usr/bin/podman-remote /usr/bin/podman
+RUN ln -s /usr/bin/podman-remote /usr/bin/docker
+
+# Add AWS ECR Credential Helper
+RUN go install github.com/awslabs/amazon-ecr-credential-helper/ecr-login/cli/docker-credential-ecr-login@latest
+
+# Install Starship
+RUN curl -sS https://starship.rs/install.sh | sh -s -- --yes
