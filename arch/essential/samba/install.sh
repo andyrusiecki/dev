@@ -1,9 +1,9 @@
 #!/bin/bash
 
 install_samba() {
+  # https://wiki.archlinux.org/title/Samba
   label=samba
 
-  # https://wiki.archlinux.org/title/Samba
   log $label "Installing dependencies..."
   install_packages samba avahi
 

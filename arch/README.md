@@ -21,10 +21,10 @@ Should start from a fresh install using archinstall with the "minimal" profile.
 | Essential - Power Management | | |
 | Essential - Firewall | | |
 | Essential - Backup | | |
-| Package Management - Paru | | |
-| Package Management - Pacman | | |
-| Package Management - Mirrorlist | | |
-| Package Management - Flatpak + Flathub | | |
+| Package Management - Paru | :white_check_mark: | |
+| Package Management - Pacman | :white_check_mark: | |
+| Package Management - Mirrorlist | :white_check_mark: | |
+| Package Management - Flatpak + Flathub | set by default | :white_check_mark: |
 | Desktop - Profile Choice | | |
 | Desktop - Gnome | | |
 | Desktop - Sway/Hyprland | | |
