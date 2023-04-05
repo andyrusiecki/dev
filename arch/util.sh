@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# these functions can be added to other scripts with this line (need to update the path)
-# ! [ -n "$UTIL_SOURCED" ] && source $(realpath ./util.sh)
-
-UTIL_SOURCED=true
-
 command_exists() {
   command -v "$1" &> /dev/null
 }
@@ -29,5 +24,3 @@ log() {
 
   echo -e "[$label] $msg"
 }
-
-UTIL_SOURCED=true

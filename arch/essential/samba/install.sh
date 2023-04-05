@@ -16,12 +16,13 @@ install_samba() {
   sudo systemctl enable --now nmb.service
   sudo systemctl enable --now avahi-daemon.service
 
-  if command_exists firewall-cmd ; then
-    log $label "Adding services to firewalld..."
-    firewall-cmd --permanent --add-service={samba,samba-client,samba-dc} --zone=home
-  else
-    log $label "No firewall service detected... skipping"
-  fi
+  ## This may not be needed
+  # if command_exists firewall-cmd ; then
+  #   log $label "Adding services to firewalld..."
+  #   firewall-cmd --permanent --add-service={samba,samba-client,samba-dc} --zone=home
+  # else
+  #   log $label "No firewall service detected... skipping"
+  # fi
 
   log $label "Complete"
 }

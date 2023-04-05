@@ -2,29 +2,33 @@
 
 A collection of post install tasks to get a fresh Arch install ready to go.
 
-Should start from a fresh install using archinstall with the "minimal" profile.
+## Starting Point
+
+Install Arch using `archinstall` with the following options:
+- Disk Layout: format drive with BTRFS
+- Bootloader: systemd-boot
+- Profile: minimal
+- Network Configuration: Use NetworkManager
 
 ## TODO
 
 | Section | Done | Tested |
 | --- | --- | --- |
-| Device - framework | | |
+| Device - framework | :white_check_mark: | |
 | Development - ? | | |
 | terminal | | |
 | UI - fonts | | |
 | UI - themes | | |
-| Essential - Network Manager | | |
-| Essential - Sound | | |
+| Essential - Sound | :white_check_mark: | |
 | Essential - Samba | :white_check_mark: | |
 | Essential - Bluetooth | | |
-| Essential - Printing | | |
-| Essential - Power Management | | |
-| Essential - Firewall | | |
+| Essential - Printing | :white_check_mark: | |
+| Essential - Firewall | :white_check_mark: | |
 | Essential - Backup | | |
 | Package Management - Paru | :white_check_mark: | |
 | Package Management - Pacman | :white_check_mark: | |
 | Package Management - Mirrorlist | :white_check_mark: | |
-| Package Management - Flatpak + Flathub | set by default | :white_check_mark: |
+| Package Management - Flatpak + Flathub | :white_check_mark: | |
 | Desktop - Profile Choice | | |
 | Desktop - Gnome | | |
 | Desktop - Sway/Hyprland | | |
