@@ -1,0 +1,102 @@
+format = "${custom.container}$all"
+
+[aws]
+disabled = true
+symbol = "  "
+
+[conda]
+symbol = " "
+
+[container]
+disabled = true
+
+[custom.container]
+description = "The current container"
+command = "bash -c 'echo $(. /var/run/.containerenv; echo ${name}: ${DISTTAG%container})'"
+when = "bash -c '[[ -f /run/.containerenv ]]'"
+style = "bold red dimmed"
+format = "[\\[$output\\]]($style) "
+disabled = false
+
+[dart]
+symbol = " "
+
+[directory]
+read_only = " "
+
+[docker_context]
+symbol = " "
+disabled = true
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[git_commit]
+tag_symbol = ", "
+only_detached = false
+tag_disabled = false
+
+[git_status]
+ahead = "${count}"
+diverged = "${ahead_count}${behind_count}"
+behind = "${count}"
+
+[golang]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kubernetes]
+disabled = true
+
+[memory_usage]
+symbol = " "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = " "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[shlvl]
+symbol = " "
+
+[swift]
+symbol = "ﯣ "

@@ -14,21 +14,23 @@ Install Arch using `archinstall` with the following options:
 
 | Section | Done | Tested |
 | --- | --- | --- |
-| Device - framework | :white_check_mark: | |
-| Development - ? | | |
-| terminal | | |
+| Device - framework | X | |
+| Development - Containers | X | |
+| Development - Shell | X | |
+| Development - Runtimes | | |
+| Development - Deploy Tools | | |
 | UI - fonts | | |
 | UI - themes | | |
-| Essential - Sound | :white_check_mark: | |
-| Essential - Samba | :white_check_mark: | |
+| Essential - Sound | X | |
+| Essential - Samba | X | |
 | Essential - Bluetooth | | |
-| Essential - Printing | :white_check_mark: | |
-| Essential - Firewall | :white_check_mark: | |
+| Essential - Printing | X | |
+| Essential - Firewall | X | |
 | Essential - Backup | | |
-| Package Management - Paru | :white_check_mark: | |
-| Package Management - Pacman | :white_check_mark: | |
-| Package Management - Mirrorlist | :white_check_mark: | |
-| Package Management - Flatpak + Flathub | :white_check_mark: | |
+| Package Management - Paru | X | |
+| Package Management - Pacman | X | |
+| Package Management - Mirrorlist | X | |
+| Package Management - Flatpak + Flathub | X | |
 | Desktop - Profile Choice | | |
 | Desktop - Gnome | | |
 | Desktop - Sway/Hyprland | | |

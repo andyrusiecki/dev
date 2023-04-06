@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source $(realpath ./util.sh)
+source $(realpath ./development/all.sh)
 source $(realpath ./device/all.sh)
 source $(realpath ./essential/all.sh)
 source $(realpath ./package-management/all.sh)
@@ -17,6 +18,8 @@ post_install() {
   install_printing
   install_samba
   install_sound
+  install_shell
+  install_containers
   # TODO: device here
 
   echo -e "\nArch Post-Install Tasks Complete!"
