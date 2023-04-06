@@ -1,6 +1,6 @@
 #!/bin/bash
 
-install_shell() {
+install_containers() {
   label=containers
 
   log $label "Installing dependencies..."
