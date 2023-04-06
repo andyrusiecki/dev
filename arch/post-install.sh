@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source $(realpath ./util.sh)
+source $(realpath ./desktop/all.sh)
 source $(realpath ./development/all.sh)
 source $(realpath ./device/all.sh)
 source $(realpath ./essential/all.sh)
@@ -14,6 +15,7 @@ post_install() {
   install_base
   install_paru
   # TODO: desktop here (need xdg-desktop-portal before flatpak)
+  install_fonts
   install_firewall
   install_printing
   install_samba

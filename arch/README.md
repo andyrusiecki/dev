@@ -19,7 +19,7 @@ Install Arch using `archinstall` with the following options:
 | Development - Shell | X | |
 | Development - Runtimes | | |
 | Development - Deploy Tools | | |
-| UI - fonts | | |
+| UI - fonts | X | |
 | UI - themes | | |
 | Essential - Sound | X | |
 | Essential - Samba | X | |
