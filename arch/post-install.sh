@@ -118,11 +118,6 @@ flatpak_apps=(
   # TODO: add apps
 )
 
-for i in ${systemd_services_root[@]}
-do
-	echo "systemd: $i"
-done
-exit 0
 echo "Starting Arch Post-Install Tasks..."
 
 # 1. Update pacman config (https://man.archlinux.org/man/pacman.conf.5)
