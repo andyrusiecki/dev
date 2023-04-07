@@ -174,11 +174,38 @@ case $profile in
 
   hyprland)
     packages+=(
+      brightnessctl
+      btop
+      file-roller
+      grim
+      gvfs
       hyprland
+      kitty
+      lxappearance
+      mako
+      pacman-contrib
+      pamixer
+      pavucontrol
+      polkit-kde-agent
+      qt5-wayland
+      qt6-wayland
+      sddm-git
+      slurp
+      swappy
+      swaylock-effects
+      swww
+      thunar
+      thunar-archive-plugin
+      waybar-hyprland
+      wlogout
+      wofi
       xdg-desktop-portal-hyprland-git
+      xfce4-settings
     )
 
-    # TODO: hyprland profile
+    systemd_services_root+=(
+      sddm.service
+    )
     ;;
 esac
 
