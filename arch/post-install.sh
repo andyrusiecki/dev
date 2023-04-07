@@ -227,8 +227,16 @@ chsh -s $(command -v fish)
 
 extensions=(
   appindicatorsupport@rgcjonas.gmail.com
-
+  bluetooth-quick-connect@bjarosze.gmail.com
+  blur-my-shell@aunetx
+  mediacontrols@cliffniff.github.com
+  nightthemeswitcher@romainvigier.fr
+  no-overview@fthx
+  pip-on-top@rafostar.github.com
+  user-theme@gnome-shell-extensions.gcampax.github.com
+  Vitals@CoreCoding.com
 )
+
 if [[ $profile == "gnome" ]]; then
   # TODO: install gnome extensions
 fi
