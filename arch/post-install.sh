@@ -138,7 +138,7 @@ sudo reflector --save /etc/pacman.d/mirrorlist --protocol https --country "Unite
 
 # 5. Install paru (https://github.com/Morganamilo/paru)
 tmp_dir=$(mktemp -d)
-git clone https://aur.archlinux.org/paru.git $tmp_dir/paru
+git clone https://aur.archlinux.org/paru-bin.git $tmp_dir/paru
 (cd $tmp_dir/paru && makepkg --noconfirm --needed -si)
 rm -rf $tmp_dir
 
