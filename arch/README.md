@@ -31,6 +31,5 @@ Install Arch using `archinstall` with the following options:
 | Package Management - Pacman | X | |
 | Package Management - Mirrorlist | X | |
 | Package Management - Flatpak + Flathub | X | |
-| Desktop - Profile Choice | | |
 | Desktop - Gnome | | |
 | Desktop - Sway/Hyprland | | |
