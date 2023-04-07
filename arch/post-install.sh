@@ -81,6 +81,10 @@ packages=(
 
   # flatpak
   flatpak
+
+  # TODO: backup (https://www.reddit.com/r/Fedora/comments/n1ekg0/comment/gwfxvhc/?utm_source=reddit&utm_medium=web2x&context=3)
+
+  # TODO: applications
 )
 systemd_services_root=(
   # mirrorlist
@@ -103,6 +107,9 @@ systemd_services_root=(
 systemd_services_user=(
   # sound
   pipewire-pulse.service
+)
+flatpak_apps=(
+  # TODO: add apps
 )
 
 for i in ${systemd_services_root[@]}
@@ -225,20 +232,24 @@ cp $root/assets/registries.conf ~/.config/containers/
 # 10. Post install tasks
 chsh -s $(command -v fish)
 
-extensions=(
-  appindicatorsupport@rgcjonas.gmail.com
-  bluetooth-quick-connect@bjarosze.gmail.com
-  blur-my-shell@aunetx
-  mediacontrols@cliffniff.github.com
-  nightthemeswitcher@romainvigier.fr
-  no-overview@fthx
-  pip-on-top@rafostar.github.com
-  user-theme@gnome-shell-extensions.gcampax.github.com
-  Vitals@CoreCoding.com
-)
-
 if [[ $profile == "gnome" ]]; then
-  # TODO: install gnome extensions
+  # enable fractional scaling
+  gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+
+  # gnome extensions
+  extensions=(
+    appindicatorsupport@rgcjonas.gmail.com
+    bluetooth-quick-connect@bjarosze.gmail.com
+    blur-my-shell@aunetx
+    mediacontrols@cliffniff.github.com
+    nightthemeswitcher@romainvigier.fr
+    no-overview@fthx
+    pip-on-top@rafostar.github.com
+    user-theme@gnome-shell-extensions.gcampax.github.com
+    Vitals@CoreCoding.com
+  )
+
+  # TODO: install extensions
 fi
 
 # 10. Enable systemd services
