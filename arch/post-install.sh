@@ -40,6 +40,10 @@ packages=(
   smartmontools
   xdg-utils
 
+  # bluetooth
+  bluez
+  bluez-utils
+
   # fonts
   noto-fonts
   ttf-sourcecodepro-nerd
@@ -95,6 +99,9 @@ packages=(
 systemd_services_root=(
   # mirrorlist
   reflector.service
+
+  # bluetooth
+  bluetooth.service
 
   # firewall
   firewalld.service
@@ -270,12 +277,21 @@ fi
 # 10. Enable systemd services
 for i in ${systemd_services_root[@]}
 do
-	sudo systemctl enable --now $i
+	sudo systemctl enable $i
 done
 
 for i in ${systemd_services_user[@]}
 do
-	systemctl enable --now --user $i
+	systemctl enable --user $i
 done
 
 echo -e "\nArch Post-Install Tasks Complete!\n"
+
+echo -n "Restarting in "
+for i in {5..1}
+do
+  echo -n "$i..."
+  sleep 1
+done
+
+systemctl reboot

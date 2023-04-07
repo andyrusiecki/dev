@@ -23,7 +23,7 @@ Install Arch using `archinstall` with the following options:
 | UI - themes | | |
 | Essential - Sound | X | |
 | Essential - Samba | X | |
-| Essential - Bluetooth | | |
+| Essential - Bluetooth | X | |
 | Essential - Printing | X | |
 | Essential - Firewall | X | |
 | Essential - Backup | | |
