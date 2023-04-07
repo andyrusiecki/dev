@@ -17,8 +17,8 @@ Install Arch using `archinstall` with the following options:
 | Device - framework | X | |
 | Development - Containers | X | |
 | Development - Shell | X | |
-| Development - Runtimes | | |
-| Development - Deploy Tools | | |
+| Development - Runtimes | X | |
+| Development - Deploy Tools | X | |
 | UI - fonts | X | |
 | UI - themes | | |
 | Essential - Sound | X | |
@@ -31,5 +31,5 @@ Install Arch using `archinstall` with the following options:
 | Package Management - Pacman | X | |
 | Package Management - Mirrorlist | X | |
 | Package Management - Flatpak + Flathub | X | |
-| Desktop - Gnome | | |
+| Desktop - Gnome | X | |
 | Desktop - Sway/Hyprland | | |

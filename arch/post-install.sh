@@ -74,10 +74,16 @@ packages=(
   starship
   python-pywal
 
-  # containers
+  # development
+  amazon-ecr-credential-helper
+  aws-cli-v2
+  docker-compose
+  go
+  jq
+  kubectl
+  make
   podman
   podman-docker
-  docker-compose
 
   # flatpak
   flatpak
@@ -229,6 +235,9 @@ mkdir -p ~/.config/containers/
 cp $root/assets/containers.conf ~/.config/containers/
 cp $root/assets/registries.conf ~/.config/containers/
 
+mkdir ~/.docker
+cp $root/assets/docker-config.json ~/.docker/config.json
+
 # 10. Post install tasks
 chsh -s $(command -v fish)
 
@@ -249,7 +258,18 @@ if [[ $profile == "gnome" ]]; then
     Vitals@CoreCoding.com
   )
 
-  # TODO: install extensions
+  shell_version=$(gnome-shell --version | cut -d' ' -f3)
+
+  for uuid in ${extensions[@]}
+  do
+    info_json=$(curl -sS "https://extensions.gnome.org/extension-info/?uuid=$uuid&shell_version=$shell_version")
+    download_url=$(echo $info_json | jq ".download_url" --raw-output)
+
+    gnome-extensions install "https://extensions.gnome.org$download_url"
+    gnome-extensions enable $uuid
+  done
+
+  # TODO: dconf import
 fi
 
 # 10. Enable systemd services
