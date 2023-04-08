@@ -29,6 +29,7 @@ root=$(dirname $(realpath $0))
 
 packages=(
   # base
+  linux-lts
   nano
   vim
   openssh
@@ -126,6 +127,12 @@ flatpak_apps=(
 )
 
 echo "Starting Arch Post-Install Tasks..."
+
+# TODO: Step 0 - setup snapper and create a snapshot
+sudo pacman -S --noconfirm --needed snapper
+sudo umount /.snapshots
+sudo rm -r /.snapshots
+sudo snapper -c root create-config /
 
 # 1. Update pacman config (https://man.archlinux.org/man/pacman.conf.5)
 # - enabling parallel downloads (defaults to 5)
@@ -234,6 +241,9 @@ case $profile in
       power-profiles-daemon
     )
 
+    systemd_services_root+=(
+      power-profiles-daemon.service
+    )
     # fixing brightness keys
     sudo cp $root/assets/framework-als-deactivate.conf /etc/modprobe.d/
 
