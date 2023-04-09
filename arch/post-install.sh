@@ -282,9 +282,6 @@ cp $root/assets/docker-config.json ~/.docker/config.json
 chsh -s $(command -v fish)
 
 if [[ $profile == "gnome" ]]; then
-  # enable fractional scaling
-  gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
-
   # gnome extensions
   extensions=(
     appindicatorsupport@rgcjonas.gmail.com
@@ -309,7 +306,9 @@ if [[ $profile == "gnome" ]]; then
     gnome-extensions enable $uuid
   done
 
+  # gnome dconf settings
   gsettings set org.gnome.desktop.datetime automatic-timezone true
+
   gsettings set org.gnome.desktop.interface clock-format "12h"
   gsettings set org.gnome.desktop.interface clock-show-weekday true
   gsettings set org.gnome.desktop.interface font-antialiasing "rgba"
@@ -334,11 +333,16 @@ if [[ $profile == "gnome" ]]; then
   gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-7 "['<SUPER>7']"
   gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-8 "['<SUPER>8']"
 
+  gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+
   gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
+
   gsettings set org.gnome.system.location enabled true
 
-  # TODO: favorites?
-  gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'org.mozilla.firefox.desktop', 'com.google.Chrome.desktop', 'com.spotify.Client.desktop', 'com.valvesoftware.Steam.desktop', 'com.slack.Slack.desktop', 'net.cozic.joplin_desktop.desktop', 'com.visualstudio.code.desktop', 'org.gnome.Terminal.desktop']"
+  # TODO: validate app names
+  gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'firefox.desktop', 'chrome.desktop', 'spotify.desktop', 'steam.desktop', 'com.slack.Slack.desktop', 'net.cozic.joplin_desktop.desktop', 'code.desktop', 'console.desktop']"
+
+  # TODO: extension settings
 fi
 
 # 10. Enable systemd services
