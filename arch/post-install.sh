@@ -93,11 +93,13 @@ packages=(
   # flatpak
   flatpak
 
-  # TODO: backup (https://www.reddit.com/r/Fedora/comments/n1ekg0/comment/gwfxvhc/?utm_source=reddit&utm_medium=web2x&context=3)
-
-  # TODO: applications
+  # Other applications
 )
 systemd_services_root=(
+  # snapper
+  snapper-cleanup.timer
+  snapper-timeline.timer
+
   # mirrorlist
   reflector.service
 
@@ -128,35 +130,37 @@ flatpak_apps=(
 
 echo "Starting Arch Post-Install Tasks..."
 
-# TODO: Step 0 - setup snapper and create a snapshot
+# 1. Setup snapper and create a snapshot (https://www.reddit.com/r/Fedora/comments/n1ekg0/comment/gwfxvhc/?utm_source=reddit&utm_medium=web2x&context=3)
 sudo pacman -S --noconfirm --needed snapper
 sudo umount /.snapshots
 sudo rm -r /.snapshots
 sudo snapper -c root create-config /
 
-# 1. Update pacman config (https://man.archlinux.org/man/pacman.conf.5)
+sudo snapper -c root create --description "Pre Arch Post-Install Tasks"
+
+# 2. Update pacman config (https://man.archlinux.org/man/pacman.conf.5)
 # - enabling parallel downloads (defaults to 5)
 sudo sed -i '/ParallelDownloads/s/^#//g' /etc/pacman.conf
 
 # - enabling multilib repo
 sudo sed -i '/\[multilib\]/,+1 s/#//' /etc/pacman.conf
 
-# 2. Update package repos and existing packages
+# 3. Update package repos and existing packages
 sudo pacman -Syu --noconfirm
 
-# 3. Install initial packages
+# 4. Install initial packages
 sudo pacman -S --noconfirm --needed bat git reflector
 
-# 4. Update pacman mirrorlist (https://wiki.archlinux.org/title/Reflector)
+# 5. Update pacman mirrorlist (https://wiki.archlinux.org/title/Reflector)
 sudo reflector --save /etc/pacman.d/mirrorlist --protocol https --country "United States" --latest 5 --sort age
 
-# 5. Install paru (https://github.com/Morganamilo/paru)
+# 6. Install paru (https://github.com/Morganamilo/paru)
 tmp_dir=$(mktemp -d)
 git clone https://aur.archlinux.org/paru-bin.git $tmp_dir/paru
 (cd $tmp_dir/paru && makepkg --noconfirm --needed -si)
 rm -rf $tmp_dir
 
-# 6. Profile
+# 7. Profile
 case $profile in
   gnome)
     packages+=(
@@ -217,7 +221,7 @@ case $profile in
     ;;
 esac
 
-# 7. Device
+# 8. Device
 case $profile in
   vm)
     packages+=(
@@ -255,10 +259,16 @@ case $profile in
     ;;
 esac
 
-# 8. Install packages
+# 9. Install packages
 paru -S --noconfirm --needed ${packages[@]}
 
-# 9. Copy config files
+# 10 Install flatpak apps
+for app in ${flatpak_apps[@]}
+do
+	flatpak install --noninteractive $app
+done
+
+# 11. Copy config files
 sudo cp $root/assets/reflector.conf /etc/xdg/reflector/reflector.conf
 
 mkdir -p ~/.config/paru
@@ -278,7 +288,7 @@ cp $root/assets/registries.conf ~/.config/containers/
 mkdir ~/.docker
 cp $root/assets/docker-config.json ~/.docker/config.json
 
-# 10. Post install tasks
+# 12. Post install tasks
 chsh -s $(command -v fish)
 
 if [[ $profile == "gnome" ]]; then
@@ -345,7 +355,7 @@ if [[ $profile == "gnome" ]]; then
   # TODO: extension settings
 fi
 
-# 10. Enable systemd services
+# 13. Enable systemd services
 for i in ${systemd_services_root[@]}
 do
 	sudo systemctl enable $i
@@ -356,6 +366,10 @@ do
 	systemctl enable --user $i
 done
 
+# 14. Create Snapshot
+sudo snapper -c root create --description "Post Arch Post-Install Tasks"
+
+# Done
 echo -e "\nArch Post-Install Tasks Complete!\n"
 
 echo -n "Restarting in "

@@ -26,7 +26,7 @@ Install Arch using `archinstall` with the following options:
 | Essential - Bluetooth | X | |
 | Essential - Printing | X | |
 | Essential - Firewall | X | |
-| Essential - Backup | | |
+| Essential - Backup | X | |
 | Package Management - Paru | X | |
 | Package Management - Pacman | X | |
 | Package Management - Mirrorlist | X | |
