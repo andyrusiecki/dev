@@ -74,6 +74,9 @@ packages=(
   libpulse
   wireplumber
 
+  # boot
+  plymouth
+
   # shell
   fish
   starship
@@ -222,7 +225,7 @@ case $profile in
 esac
 
 # 8. Device
-case $profile in
+case $device in
   vm)
     packages+=(
       mesa
